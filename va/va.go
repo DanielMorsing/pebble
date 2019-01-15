@@ -492,7 +492,7 @@ func (va VAImpl) fetchHTTP(identifier string, token string) ([]byte, string, *ac
 
 	client := &http.Client{
 		Transport: transport,
-		Timeout:   time.Second * 5,
+		Timeout:   time.Second * 60,
 	}
 	
 	begin := time.Now()
