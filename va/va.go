@@ -494,7 +494,11 @@ func (va VAImpl) fetchHTTP(identifier string, token string) ([]byte, string, *ac
 		Transport: transport,
 		Timeout:   time.Second * 5,
 	}
-
+	
+	begin := time.Now()
+	defer func() {
+		va.log.Printf("time taken for request: %v", time.Since(begin))
+	}()
 	resp, err := client.Do(httpRequest)
 	if err != nil {
 		return nil, url.String(), acme.ConnectionProblem(err.Error())
