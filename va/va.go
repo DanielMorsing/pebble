@@ -510,6 +510,7 @@ func (va VAImpl) fetchHTTP(identifier string, token string) ([]byte, string, *ac
 	}
 
 	resp, err := client.Do(httpRequest)
+	fmt.Println("RESPONSE", err)
 	if err != nil {
 		return nil, url.String(), acme.ConnectionProblem(err.Error())
 	}
